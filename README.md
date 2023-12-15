@@ -392,4 +392,4 @@ iptables -A INPUT -p tcp --dport 80 -m time --timestart 13:01 --timestop 16:00 -
 ### Result
 ![Screenshot (112)](https://github.com/wahyuandhikarizaldi/Jarkom-Modul-5-IT06-2023/assets/99130485/ffd6d97c-fffa-4200-aecb-02349c57ca73)
 
-Dari hasil diatas, dapat dilihat apabila WebServer diakses pada jam 12.30 hari Jum'at, maka pesan terkirim yang berarti Server dapat diakses.
+Dari hasil diatas, dapat dilihat apabila WebServer diakses pada jam 12.42 hari Jum'at, maka pesan terkirim yang berarti Server dapat diakses.
