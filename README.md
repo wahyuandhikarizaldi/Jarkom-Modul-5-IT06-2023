@@ -375,3 +375,21 @@ iptables -A INPUT -p tcp --dport 80 -j DROP
 ![WhatsApp Image 2023-12-15 at 19 31 05_92a415a0](https://github.com/wahyuandhikarizaldi/Jarkom-Modul-5-IT06-2023/assets/113814423/7a113a16-6448-46d0-81a7-178cc168bec5)
 
 Dari hasil diatas, dapat dilihat apabila WebServer diakses pada jam kerja, maka pesan terkirim yang berarti Server dapat diakses. Tetapi apabila diakses diluar jam kerja, pesan tidak terkirim yang berarti Server tidak terakses.
+
+## Soal 6
+>Lalu, karena ternyata terdapat beberapa waktu di mana network administrator dari WebServer tidak bisa stand by, sehingga perlu ditambahkan rule bahwa akses pada hari Senin - Kamis pada jam 12.00 - 13.00 dilarang (istirahat maksi cuy) dan akses di hari Jumat pada jam 11.00 - 13.00 juga dilarang (maklum, Jumatan rek).
+
+Konfigurasi iptables di WebServer menjadi
+
+**WebServer**
+```
+iptables -A INPUT -p tcp --dport 80 -m time --timestart 08:00 --timestop 11:59 --weekdays Mon,Tue,Wed,Thu -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -m time --timestart 13:01 --timestop 16:00 --weekdays Mon,Tue,Wed,Thu  -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -m time --timestart 08:00 --timestop 10:59 --weekdays Fri -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -m time --timestart 13:01 --timestop 16:00 --weekdays Fri -j ACCEPT
+```
+
+### Result
+![Screenshot (112)](https://github.com/wahyuandhikarizaldi/Jarkom-Modul-5-IT06-2023/assets/99130485/ffd6d97c-fffa-4200-aecb-02349c57ca73)
+
+Dari hasil diatas, dapat dilihat apabila WebServer diakses pada jam 12.30 hari Jum'at, maka pesan terkirim yang berarti Server dapat diakses.
